@@ -1,59 +1,57 @@
-import React from 'react'
+import React from 'react';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
+  Container,
+  Input,
+  Row,
+  Col,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText
+  Button,
 } from 'reactstrap';
+import {IoIosRadio, IoIosSearch, IoIosPerson} from 'react-icons/io';
+import './styles.scss';
 
-const Header:React.FC<any>=()=>{
-    const [isOpen, setIsOpen] = React.useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
+const Header: React.FC<any> = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Sound</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/components/">Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
-        </Collapse>
+      <Navbar className="menu_Header" expand="md">
+        <Container className="container_Header">
+          <Row>
+            <Col sm="6">
+              <IoIosRadio size={20} className="icon_Header" />
+              <NavbarBrand href="/" className="title_Header">
+                SOUNDREDUX
+              </NavbarBrand>
+            </Col>
+            <Col sm="6" className="right_Header m-auto">
+              <div className="search_Content">
+                <div className="search_Box ">
+                  <IoIosSearch className="search_Icon" />
+                  <Input className="search_Input" placeholder="SEARCH" />
+                </div>
+              </div>
+              <div className="profile_Header">
+                <div className="profile">
+                  <UncontrolledDropdown>
+                    <DropdownToggle nav caret>
+                      <IoIosPerson className="icon_Profile" />
+                    </DropdownToggle>
+                    <DropdownMenu right className="dropdown_Profile">
+                      <Button className="btnSignin">
+                        Sign into SoundCloud
+                      </Button>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </Navbar>
     </div>
   );
-}
-export default Header
+};
+export default Header;
